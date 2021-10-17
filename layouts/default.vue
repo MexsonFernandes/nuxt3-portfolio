@@ -1,9 +1,9 @@
 <template>
-  <div class="min-h-screen flex flex-row bg-gray-100">
-    <div class="flex flex-col w-56 bg-white overflow-hidden">
-      <div class="flex flex-wrap content-center p-4">
+  <div class="flex h-screen bg-gray-100">
+    <div class="w-56 overflow-hidden bg-white">
+      <div class="flex flex-wrap justify-center p-4">
         <img
-          class="h-28 w-28 object-cover rounded-full"
+          class="object-cover align-middle rounded-full h-28 w-28 drop-shadow-lg"
           src="~/assets/images/mexson.png"
           alt="Mexson Fernandes"
         />
@@ -12,28 +12,10 @@
         <li v-for="(tab, index) in tabs" :key="`tab-${index}`">
           <NuxtLink
             :to="tab.route"
-            class="
-              flex flex-row
-              items-center
-              h-12
-              transform
-              hover:translate-x-2
-              transition-transform
-              ease-in
-              duration-200
-              text-gray-500
-              hover:text-gray-800
-            "
+            class="flex flex-row items-center h-12 text-gray-500 transition-transform duration-200 ease-in transform hover:translate-x-2 hover:text-gray-800"
           >
             <span
-              class="
-                inline-flex
-                items-center
-                justify-center
-                h-12
-                w-12
-                text-lg text-gray-400
-              "
+              class="inline-flex items-center justify-center w-12 h-12 text-lg text-gray-400 "
               ><i class="bx bx-home"></i
             ></span>
             <span class="text-sm font-medium">{{ tab.name }}</span>
@@ -41,7 +23,11 @@
         </li>
       </ul>
     </div>
-    <slot />
+    <div class="flex flex-1 overflow-hidden">
+      <div class="flex-1 ml-5 overflow-y-scroll">
+        <slot />
+      </div>
+    </div>
   </div>
 </template>
 

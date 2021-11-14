@@ -8,7 +8,7 @@
     "allowJs": true,
     "resolveJsonModule": true,
     "types": [
-      "node"
+      "node",
     ],
     "paths": {
       "@/*": ["./*"]

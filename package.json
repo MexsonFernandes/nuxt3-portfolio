@@ -15,5 +15,11 @@
     "postcss": "^8.3.9",
     "sass": "^1.43.2",
     "sass-loader": "^12.2.0"
+  },
+  "dependencies": {
+    "micromark": "^3.0.7",
+    "micromark-extension-gfm": "^2.0.0",
+    "micromark-extension-gfm-task-list-item": "^1.0.2",
+    "vue3-markdown-it": "^1.0.9"
   }
 }

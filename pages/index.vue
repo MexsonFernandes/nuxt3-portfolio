@@ -68,7 +68,7 @@
           :href="link.src"
           ><img
             class="rounded-half"
-            :src="`../assets/images/icons/${link.icon}`"
+            :src="require(`~/assets/images/icons/${link.icon}`)"
         /></a>
       </div>
     </div>

@@ -10,7 +10,7 @@
         class="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 md:gap-x-10 xl-grid-cols-6 gap-y-10 gap-x-6"
       >
         <div
-          v-for="interest in data"
+          v-for="interest in interests"
           :key="`${interest._id}-data`"
           class="container max-w-md mx-auto transition duration-300 rounded-lg shadow-lg  hover:shadow-2xl"
         >
@@ -37,8 +37,15 @@
   </div>
 </template>
 
-<script setup>
-const { data } = await useFetch(`https://api.mexsonfernandes.com/interests`);
+<script>
+export default {
+  async asyncData() {
+    const interests = await $fetch(`${process.env.base}/interests`);
+    return {
+      interests,
+    };
+  },
+};
 </script>
 
 <style scoped>

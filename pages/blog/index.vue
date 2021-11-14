@@ -5,7 +5,7 @@
       <div class="px-6 py-8">
         <div class="container flex justify-between mx-auto">
           <div class="w-full lg:w-8/12">
-            <div class="mt-6" v-for="article in articles.data.value">
+            <div class="mt-6" v-for="article in articles">
               <div
                 class="max-w-4xl px-10 py-6 mx-auto bg-white bg-gray-100 rounded-lg shadow-md "
               >
@@ -47,7 +47,7 @@
               >
                 <ul>
                   <li
-                    v-for="category in categories.data.value"
+                    v-for="category in categories"
                     :key="`${category._id}-category`"
                     class="flex items-center mt-2"
                   >
@@ -67,7 +67,17 @@
   </div>
 </template>
 
-<script setup>
-const categories = await useFetch(`https://api.mexsonfernandes.com/categories`);
-const articles = await useFetch(`https://api.mexsonfernandes.com/articles`);
+<script>
+export default {
+  async asyncData() {
+    const articles = await $fetch(`${process.env.base}/articles`);
+    const categories = await $fetch(
+      `https://api.mexsonfernandes.com/categories`
+    );
+    return {
+      articles,
+      categories,
+    };
+  },
+};
 </script>

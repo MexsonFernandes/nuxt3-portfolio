@@ -1,29 +1,27 @@
 {
   "private": true,
   "scripts": {
+    "build": "nuxt generate",
     "dev": "nuxt dev",
-    "build": "nuxt build",
-    "start": "node .output/server/index.mjs"
+    "generate": "nuxt generate",
+    "lint": "eslint --ext .vue .",
+    "start": "node .output/server/index.mjs",
+    "test": "yarn lint --ext .vue"
   },
   "devDependencies": {
-    "@fortawesome/free-brands-svg-icons": "^5.15.4",
-    "@fortawesome/free-solid-svg-icons": "^5.15.4",
-    "@nuxtjs/fontawesome": "^1.1.2",
+    "@nuxt/bridge": "npm:@nuxt/bridge-edge@0.0.0-27183684.49f7b39",
+    "@nuxtjs/eslint-config": "^7.0.0",
     "@nuxtjs/tailwindcss": "^4.2.1",
-    "autoprefixer": "^10.3.7",
-    "nuxt3": "latest",
-    "postcss": "^8.3.9",
-    "sass": "^1.43.2",
-    "sass-loader": "^12.2.0"
-  },
-  "dependencies": {
-    "micromark": "^3.0.7",
-    "micromark-extension-gfm": "^2.0.0",
-    "micromark-extension-gfm-task-list-item": "^1.0.2",
-    "vue3-markdown-it": "^1.0.9"
+    "autoprefixer": "^10.4.0",
+    "nuxt-edge": "latest",
+    "sass": "1.43.2",
+    "sass-loader": "10.1.1"
   },
   "engines": {
     "node": "=14",
     "npm": ">=6.0.0"
+  },
+  "dependencies": {
+    "vue-markdown": "^2.2.4"
   }
 }

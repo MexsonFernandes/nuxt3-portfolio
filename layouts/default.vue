@@ -24,19 +24,19 @@
       </ul>
 
       <div class="grid place-items-center">
-        <Markdown :source="hitCounter"> </Markdown>
+        <vue-markdown :source="hitCounter"> </vue-markdown>
       </div>
     </div>
     <div class="flex flex-1 overflow-hidden">
       <div class="flex-1 ml-5 overflow-y-scroll">
-        <slot />
+        <nuxt />
       </div>
     </div>
   </div>
 </template>
 
-<script lang="ts">
-import Markdown from "vue3-markdown-it";
+<script>
+import VueMarkdown from "vue-markdown";
 
 export default {
   data: () => {
@@ -67,7 +67,7 @@ export default {
     };
   },
   components: {
-    Markdown,
+    "vue-markdown": VueMarkdown,
   },
 };
 </script>

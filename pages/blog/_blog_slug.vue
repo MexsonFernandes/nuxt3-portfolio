@@ -26,30 +26,29 @@
           {{ data[0].title }}
         </h1>
         <h2 class="mt-2 text-sm text-gray-500">{{ data[0].date }}</h2>
-        <Markdown class="markdown" :source="data[0].content" />
+        <vue-markdown class="markdown" :source="data[0].content" />
       </article>
     </main>
   </div>
 </template>
 
-<script setup>
-import { useRoute } from "vue-router";
-
-const { params } = useRoute();
-const { data } = await useFetch(
-  `https://api.mexsonfernandes.com/articles?slug=${params.slug}`
-);
-if (data && data.value && data.value.length && data.value.length == 0) {
-  window.location.href = "/blog";
-}
-</script>
-
 <script>
-import Markdown from "vue3-markdown-it";
+import VueMarkdown from "vue-markdown";
 
 export default {
   components: {
-    Markdown,
+    "vue-markdown": VueMarkdown,
+  },
+  async asyncData({ params, redirect }) {
+    const data = await $fetch(
+      `${process.env.base}/articles?slug=${params.blog_slug}`
+    );
+    if (data.length && data.length === 0) {
+      redirect("/blog");
+    }
+    return {
+      data,
+    };
   },
 };
 </script>

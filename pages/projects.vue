@@ -2,15 +2,15 @@
   <div>
     <page-header title="Projects"></page-header>
     <div class="flex-grow min-h-screen px-10 pt-12 pb-12 bg-white-100">
-      <div v-for="project in data" class="mt-5">
+      <div v-for="project in projects" class="mt-5">
         <h3 class="mt-0 mb-2 text-4xl font-normal leading-normal">
           {{ project.title }}
         </h3>
         <h3 class="mt-0 mb-2 text-2xl font-normal leading-normal">
-          <Markdown :source="project.subtitle" />
+          <vue-markdown :source="project.subtitle" />
         </h3>
         <div class="markdown">
-          <Markdown :source="project.description" />
+          <vue-markdown :source="project.description" />
         </div>
 
         <div
@@ -113,18 +113,18 @@
   </div>
 </template>
 
-<script setup>
-const { data } = await useFetch(
-  `https://api.mexsonfernandes.com/projects?_sort=started`
-);
-</script>
-
 <script>
-import Markdown from "vue3-markdown-it";
+import VueMarkdown from "vue-markdown";
 
 export default {
   components: {
-    Markdown,
+    "vue-markdown": VueMarkdown,
+  },
+  async asyncData() {
+    const projects = await $fetch(`${process.env.base}/projects?_sort=started`);
+    return {
+      projects,
+    };
   },
 };
 </script>
